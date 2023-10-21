@@ -3,7 +3,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-quality-scenarios]]
 == Qualitätsanforderungen
 
+=== Sicherheit
 
+image::threat_model.png[threat model]
 
 .Weiterführende Informationen
 

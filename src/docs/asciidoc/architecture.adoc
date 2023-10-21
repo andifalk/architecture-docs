@@ -7,10 +7,11 @@
 // configure DE settings for asciidoc
 include::chapters/config.adoc[]
 
-= image:arc42-logo.png[arc42] Template
+// = image:arc42-logo.png[arc42] Template
 :revnumber: 8.2 DE
 :revdate: Januar 2023
-:revremark: (basiert ARC42)
+:revremark: (basiert auf Arc42)
+:version-label: V.1.0
 :doctype: book
 :doctitle: Sample Architecture
 // toc-title definition MUST follow document title without blank line!
