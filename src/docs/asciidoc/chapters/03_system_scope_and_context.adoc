@@ -1,0 +1,42 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-system-scope-and-context]]
+== Kontextabgrenzung
+
+
+
+=== Fachlicher Kontext
+
+[plantuml,"business_context",png]
+----
+class Animal
+class Cat 
+class Dog
+Animal <|-- Cat 
+Animal <|-- Dog
+----
+
+**<Diagramm und/oder Tabelle>**
+
+**<optional: Erläuterung der externen fachlichen Schnittstellen>**
+
+=== Technischer Kontext
+
+[plantuml,"technical_context",png]
+----
+node node1
+node node2
+node node3
+node node4
+node node5
+node1 -- node2 : label1
+node1 .. node3 : label2
+node1 ~~ node4 : label3
+node1 == node5
+----
+
+**<Diagramm oder Tabelle>**
+
+**<optional: Erläuterung der externen technischen Schnittstellen>**
+
+**<Mapping fachliche auf technische Schnittstellen>**
