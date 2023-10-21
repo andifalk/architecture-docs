@@ -1,6 +1,6 @@
 # Architecture Docs
 
-Sample architecture documentation based on ARC42 asciidoc template including support for UML diagrams with [PlantUML](https://plantuml.com).
+Sample architecture documentation based on [ARC42](https://arc42.org) asciidoc template including support for UML diagrams with [PlantUML](https://plantuml.com).
 
 ## Prerequisites
 
