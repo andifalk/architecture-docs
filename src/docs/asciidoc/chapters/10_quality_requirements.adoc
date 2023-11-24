@@ -7,6 +7,20 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 image::threat_model.png[threat model]
 
+==== Assets
+
+[cols="1,2" options="header"]
+|===
+|Option |Kriterien
+| *Personendaten* | Personenidentifizierbare Daten (PII) sind gemäß EU Grundschutzdatenverordnung zu verarbeiten. 
+| *Gesundheitsdaten* | Gesundheitsdaten sind als besonders schützenswerte Daten gemäß EU Grundschutzdatenverordnung zu verarbeiten.  
+|===
+
+==== Bedrohungen
+
+==== Behandlungen von Bedrohungen
+
+
 .Weiterführende Informationen
 
 Siehe https://docs.arc42.org/section-10/[Qualitätsanforderungen] in der online-Dokumentation (auf Englisch!).

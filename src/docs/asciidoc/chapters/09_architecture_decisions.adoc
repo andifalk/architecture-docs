@@ -5,21 +5,37 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 Hilfreich: https://adr.github.io/[Architectural Decision Records (ADRs)]
 
-=== JUnit5
+=== Test-Framework
 
-Verwendung von Plain JUnit5 für erweiterte Test-Assertions
+Welches Testing-Framework soll für automatisierte Tests verwendet werden?
 
 ==== Kontext und Problemstellung
 
-Wie schreibt man lesbare Testbehauptungen?
-Wie schreibt man lesbare Test-Assertions für fortgeschrittene Tests?
+* Wie bekommt man eine hohe Akzeptanz der Entwickler für den testgetriebenen Ansatz?
+* Wie schreibt man lesbare Testbehauptungen?
+* Wie schreibt man lesbare Test-Assertions für fortgeschrittene Tests?
 
 ==== In Betracht gezogene Optionen
 
-* Einfaches JUnit5
-* Hamcrest
-* AssertJ
+* Junit 4
+* JUnit 5
+* JUnit 5 mit AssertJ
+* TestNG
+
+[cols="1,2" options="header"]
+|===
+|Option |Kriterien
+| *JUnit 4* | JUnit 4 ist veraltet und wird nicht mehr aktiv weiter entwickelt. 
+| *JUnit 5* | JUnit 5 ist inzwischen der Industriestandard, wird aktiv weiter entwickelt, hat viele Features und wird von vielen IDEs, 3rdParty Libs und Frameworks gut unterstützt. 
+| *JUnit 5 mit AssertJ* | JUnit 5 zusammen mit AssertJ ermöglicht eine Fluent-Schreibweise für Assertions, dadurch höhere Akzeptanz für TDD erwartet als mit STandard-Assertions von JUnit 5.
+| *TestNG* | War früher mal eine gute Alternative zu JUnit 4. Inzwischen unter Entwicklern nicht mehr allzu beliebt, negative Akzeptanz für TDD erwartet  
+|===
 
 ==== Ergebnis der Entscheidung
 
-Gewählte Option: "Plain JUnit5", da es sich um ein Standard-Framework handelt und die Funktionen der anderen Frameworks den Nachteil des Hinzufügens einer neuen Abhängigkeit nicht aufwiegen.
+Gewählte Option: "JUnit 5 mit AssertJ", da es aufgrund der Features von JUnit 5 auch fortschrittliche Tests ermöglicht, mit AssertJ gut lesbare Assertions ermöglicht und insgesamt eine hohe Akzeptanz für TDD bei den Entwicklern hat.
+
+==== Konsequenzen
+
+* Entwickler müssen ggf. Know-How in Richtung JUnit 5 (falls nur JUnit 4 verwendet wurde) aufbauen
+* Entwickler müssen ggf. Know-.How mit AssertJ aufbauen (wenn sie bisher mit Hamcrest oder JUnit Bordmitteln gearbeitet haben)

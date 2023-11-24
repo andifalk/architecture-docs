@@ -5,6 +5,7 @@
 
 // enable table-of-contents
 :toc:
+:toclevels: 4
 
 :caution-caption: Achtung
 :important-caption: Wichtig
