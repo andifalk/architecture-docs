@@ -3,4 +3,21 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-architecture-constraints]]
 == Randbedingungen
 
+=== Organisatorisch
 
+[cols="1,2" options="header"]
+|===
+|Randbedingung |Hintergrund
+| *Vorgehensmodell* | Das System wird in agiler Arbeitsweise mit SCRUM realisiert. 
+| *Zeitraum* | Das System soll Ende Q3 diesen Jahres produktiv gesetzt werden. 
+| *Hohe Sicherheitsanforderungen an die Vertraulichkeit und Integrität* | Es werden neben Personendaten auch sehr vertrauliche Daten (Medizinische Gesundheitsdaten) verarbeitet. 
+|===
+
+=== Technisch
+
+[cols="1,2" options="header"]
+|===
+|Randbedingung |Hintergrund
+| *Plattform* | Das System muss in einem Kubernetes Cluster (AKS) auf der MS Azure Public Cloud betrieben werden. 
+| *Technologischer Stack* | Das Frontend wird als Angular SPA implementiert, das Backend wird mit Java und Spring Boot erstellt. 
+|===

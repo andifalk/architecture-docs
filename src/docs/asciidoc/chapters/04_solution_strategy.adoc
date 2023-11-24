@@ -3,4 +3,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-solution-strategy]]
 == Lösungsstrategie
 
-
+[cols="1,2" options="header"]
+|===
+|Aufgabe/Problem |Lösungsansatz
+| *Streng vertrauliche Daten* | Alle Daten werden _In Transit_(bei der Übertragung) und _At Rest_ (bei der Speicherung) mittels TLS (Übertragung) bzw. mit AES-256 (Speicherung) verschlüsselt. Schlüssel hierfür sind in einem Key Management System abzulegen. 
+| *Hohe Performanz der API* | Verwendung von gRPC mit dem Binärprotokoll ProtoBuf für höchstmögliche Performanz bei der Abfrage von Daten per API. 
+|===

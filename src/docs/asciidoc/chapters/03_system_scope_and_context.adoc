@@ -9,11 +9,12 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [plantuml,"business_context",png]
 ----
-class Animal
-class Cat 
-class Dog
-Animal <|-- Cat 
-Animal <|-- Dog
+node "My System" as mysys {
+}
+actor User
+actor Administrator
+User --> mysys
+Administrator --> mysys
 ----
 
 **<Diagramm und/oder Tabelle>**
@@ -24,15 +25,24 @@ Animal <|-- Dog
 
 [plantuml,"technical_context",png]
 ----
-node node1
-node node2
-node node3
-node node4
-node node5
-node1 -- node2 : label1
-node1 .. node3 : label2
-node1 ~~ node4 : label3
-node1 == node5
+actor User
+actor Administrator
+cloud "MS Azure" as azure  {
+    node "AKS (Kubernetes)" as k8s {
+        component "Customer Service (gRPC)" as customer_service
+    }
+    database "Customer DB (PostgeSQL)" as customer_db
+    customer_service --> customer_db : ""JDBC""
+}
+
+node Internet {
+    node "Web Browser" {
+        component "Customer UI (SPA)" as spa
+    }
+}
+User --> spa : ""HTTPS""
+Administrator --> spa : ""HTTPS""
+spa --> customer_service : ""HTTPS""
 ----
 
 **<Diagramm oder Tabelle>**

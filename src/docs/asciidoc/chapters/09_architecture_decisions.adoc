@@ -3,4 +3,23 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-design-decisions]]
 == Architekturentscheidungen
 
+Hilfreich: https://adr.github.io/[Architectural Decision Records (ADRs)]
 
+=== JUnit5
+
+Verwendung von Plain JUnit5 für erweiterte Test-Assertions
+
+==== Kontext und Problemstellung
+
+Wie schreibt man lesbare Testbehauptungen?
+Wie schreibt man lesbare Test-Assertions für fortgeschrittene Tests?
+
+==== In Betracht gezogene Optionen
+
+* Einfaches JUnit5
+* Hamcrest
+* AssertJ
+
+==== Ergebnis der Entscheidung
+
+Gewählte Option: "Plain JUnit5", da es sich um ein Standard-Framework handelt und die Funktionen der anderen Frameworks den Nachteil des Hinzufügens einer neuen Abhängigkeit nicht aufwiegen.
