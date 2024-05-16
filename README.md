@@ -9,4 +9,4 @@ See [GraphViz Dot](https://plantuml.com/graphviz-dot) for details.
 
 ## Build docs
 
-Just perform a `./mvnw clean package`to generate the PDF documentation file.
+Just perform a `./mvnw clean package`to generate the PDF and HTML5 documentation file.
