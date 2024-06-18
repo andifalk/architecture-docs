@@ -27,6 +27,30 @@ Dafür wird ein Ölfilter, Öl, Mikrofilter und ein Luftfilter (Ersatzteile) ben
 * Für 10% der Bestellungen ist eine manuelle Bearbeitung durch den Sach- und / oder Lagermitarbeiter notwendig
 * Der Kunde wünscht eine Terminbestätigung via E-Mail
 
+[plantuml,"business_context",png]
+----
+:Kundenbetreuer: as betreuer
+:Lagerarbeiter: as lager
+:Werkstattmeister: as meister
+:Ersatzteile-Lieferant: as lieferant << System >>
+rectangle Autohausverwaltung {
+ (Kundentermin verainbaren) as termin
+ (Ersatzteil reservieren) as ersatz
+ (Reservierung prüfen) as reservierung
+ (Ersatzteil bestellen) as bestellen
+ (Werkstattauslastung planen) as auslastung
+ (Auftragslage ermitteln) as auftrag
+ ersatz .> termin : <<extend>>
+ auslastung .> auftrag : <<include>>
+}
+betreuer --> termin
+lager --> ersatz
+lager --> reservierung
+lager --> bestellen
+meister --> auslastung
+bestellen --> lieferant
+----
+
 image::use_case.png[use_case]
 
 **<Diagramm und/oder Tabelle>**
