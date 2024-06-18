@@ -3,47 +3,37 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-system-scope-and-context]]
 == Kontextabgrenzung
 
-
+image::kontext-sicht.png[Systemkontext]
 
 === Fachlicher Kontext
 
-[plantuml,"business_context",png]
-----
-node "My System" as mysys {
-}
-actor User
-actor Administrator
-User --> mysys
-Administrator --> mysys
-----
+Folgende Use Cases werden mit dem System umgesetzt:
+
+* Als Kundenbetreuer:in möchte ich einen Termin abgestimmt auf Werkstattkapazität und Verfügbarkeit von Ersatzteilen über das System erstellen, während ich im Gespräch mit den Kunden bin.
+* Als Lagermitarbeiter:in möchte ich Wartungsteile automatisiert bestellen. Ein Eingriff soll nur notwendig sein, wenn die Verfügbarkeit automatisiert nicht sichergestellt werden kann.
+* Als Werkstattmeister:in möchte ich die Auslastung meiner Werkstattmitarbeiter:innen abgestimmt mit der Auftragslage planen können.
+
+Weitere Randbedingungen sind:
+
+* Termin vereinbaren mit automatisierter Ersatzteilreservierung
+* Die Ersatzteilreservierung muss zusätzlich für den Lagerarbeiter zugänglich sein
+* Bei der Werkstattplanung muss die aktuelle Auftragslage für den anstehenden Planungszeitraum ermittelt werden
+* Reservierungsanfragen, die nicht automatisiert bearbeitet werden können, müssen vom Lagerarbeiter geprüft werden
+* Die Kunde vereinbart einen Termin für eine Wartungsarbeit z.B. Inspektion 1.
+Dafür wird ein Ölfilter, Öl, Mikrofilter und ein Luftfilter (Ersatzteile) benötigt
+* Wartungsteile werden immer vom gleichen Lieferanten bestellt
+* Wartungsteile sind nur in Ausnahmefällen nicht über Nacht lieferbar
+* Eine voll automatisierte Reservierungs- und Bestellverarbeitung ist zu 90% ohne manuelle Eingriffe möglich
+* Für 10% der Bestellungen ist eine manuelle Bearbeitung durch den Sach- und / oder Lagermitarbeiter notwendig
+* Der Kunde wünscht eine Terminbestätigung via E-Mail
+
+image::use_case.png[use_case]
 
 **<Diagramm und/oder Tabelle>**
 
 **<optional: Erläuterung der externen fachlichen Schnittstellen>**
 
 === Technischer Kontext
-
-[plantuml,"technical_context",png]
-----
-actor User
-actor Administrator
-cloud "MS Azure" as azure  {
-    node "AKS (Kubernetes)" as k8s {
-        component "Customer Service (gRPC)" as customer_service
-    }
-    database "Customer DB (PostgeSQL)" as customer_db
-    customer_service --> customer_db : ""JDBC""
-}
-
-node Internet {
-    node "Web Browser" {
-        component "Customer UI (SPA)" as spa
-    }
-}
-User --> spa : ""HTTPS""
-Administrator --> spa : ""HTTPS""
-spa --> customer_service : ""HTTPS""
-----
 
 **<Diagramm oder Tabelle>**
 

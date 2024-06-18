@@ -3,7 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-deployment-view]]
 == Verteilungssicht
 
-
+image::verteilung.png[Verteilung]
 
 === Infrastruktur Ebene 1
 

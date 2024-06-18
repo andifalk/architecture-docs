@@ -7,8 +7,15 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Whitebox Gesamtsystem
 
+image::bausteinsicht1.png[bausteinsicht]
 
+==== Mit Beziehungen (Innen)
 
+image::bausteinsicht1_beziehungen.png[bausteinsicht]
+
+==== Mit Beziehungen (Aussen)
+
+image::bausteinsicht1_beziehungen_aussen.png[bausteinsicht]
 _**<Übersichtsdiagramm>**_
 
 Begründung:: _<Erläuternder Text>_
@@ -35,55 +42,74 @@ _<(Optional) Erfüllte Anforderungen>_
 
 _<(optional) Offene Punkte/Probleme/Risiken>_
 
-==== <Name Blackbox 2>
-
-_<Blackbox-Template>_
-
-==== <Name Blackbox n>
-
-_<Blackbox-Template>_
-
-
-==== <Name Schnittstelle 1>
-
-...
-
-==== <Name Schnittstelle m>
-
 === Ebene 2
 
+==== Whitebox _Fahrzeugverwaltung_
 
-
-==== Whitebox _<Baustein 1>_
-
-
-
-_<Whitebox-Template>_
-
-==== Whitebox _<Baustein 2>_
-
-_<Whitebox-Template>_
-
-...
-
-==== Whitebox _<Baustein m>_
-
-_<Whitebox-Template>_
+image::bausteinsicht2.png[bausteinsicht]
 
 === Ebene 3
 
+==== Whitebox Bestandsführung
+
+image::bausteinsicht_ebene3.png[Verteilung]
 
 
-==== Whitebox <_Baustein x.1_>
+===== Schnittstellenbeschreibung _reserviereErsatzteile_
+
+**Steckbrief**
+
+Die Schnittstelle _reserviereErsatzteile_ des Bausteins _Lagerverwaltung_ ermöglicht die Reservierung einer Liste von Ersatzteilen anhand ihrer ID.
+
+**Interaktionen**
+
+* _Reservierung reserviereErsatzteile(Zeitraum zeitraum, Long kundenId, Long fahrzeugId, List<Long> ersatzteileIds)_
+* Schnittstelle ist als Java Methode der Klasse ReservierungsService implementiert
+* Kann eine Reservierung nicht durchgeführt werden, wird dies durch einen Status getrackt. Der Konsument kann anhand des Status selbst entscheiden, wie damit umzugehen ist.
+
+**Datentypen und Konstanten**
+
+* Die Klassen Reservierung, ErsatzteilReservierung und Zeitraum sind im Domänenmodell beschrieben (Link zum Domänenmodell im Confluence)
+* Für die Klasse ErsatzteilReservierung kann der Status folgende Werte annehmen
+    ** ERSATZTEIL_RESERVIERT
+    ** ERSATZTEIL_BESTELLT
+    ** AUTOMATISCHE_ERSATZTEIL_RESERVIERUNG_NICHT_MÖGLICH
+    ** ERSATZTEIL_ID_UNBEKANNT
+* Für die Klasse Reservierung kann der Status folgende Werte annehmen
+    ** RESERVIERUNG_ERFOLGREICH
+    ** AUTOMATISCHE_RESERVIERUNG_NICHT_ERFOLGREICH
+
+**Fehlerbehandlung**
+
+* Während der Erstellung einer Reservierung können ausschließlich RuntimeExceptions auftreten
+* Fachlich auftretende Fehler hinsichtlich einer Reservierung werden durch den Status beschrieben
+
+**Einstellungen**
+
+* Keine weiteren Konfigurationsmöglichkeiten
+
+**Qualitätsmerkmale**
+
+* Performanz – Antwort kommt binnen 3 Sekunden
+* Verfügbarkeit – 5:00 Uhr bis 23:00 Uhr
+* Sicherheit – OAuth2 Authentifizierung
+* Siehe Link zu den Qualitätsmerkmalen im Confluence
+
+**Entscheidungen**
+
+* Die Schnittstelle soll alle Informationen anhand der Parameter erhalten, sodass der Baustein zustandslos arbeiten kann
+* Die Reservierung hält eine Referenz auf den Kunden und das Fahrzeug, für das die Ersatzteile benötigt werden
+* Die Schnittstelle bietet die Möglichkeit eine Menge von Ersatzteilen zu reservieren. Das Ergebnis der Reservierung wird via Status getrackt und dem Konsumenten zur Auswertung angeboten. Ein Status wird auf Ebene eines Ersatzteils sowie kumuliert im Reservierungsauftrag bereitgestellt
+
+**Beispielverwendung**
+
+_Long kundenid = 4711L;
+Long fahrzeugId = 1337L;
+Zeitraum zeitraum = new Zeitraum(2020, 2, 12, 60);
+List<Long> ersatzteile = List.of(42L, 4815162342L);_
+
+_Reservierung reservierung = new ReservierungsService()
+.reserviereErsatzteile(zeitraum, kundenId, fahrzeugId, ersatzteile);_
 
 
 
-_<Whitebox-Template>_
-
-==== Whitebox <_Baustein x.2_>
-
-_<Whitebox-Template>_
-
-==== Whitebox <_Baustein y.1_>
-
-_<Whitebox-Template>_
